@@ -76,7 +76,7 @@ def has_dependency(metadata: dict, keys: tuple[str, ...]) -> bool:
 
 def collect_tool_sources(metadata: dict, workspace_path: Path) -> tuple[list[tuple[Path, Path]], list[str]]:
     """Build source/destination pairs for declared external dependencies."""
-    reference_path = Path("reference")
+    reference_path = Path("references")
     source_pairs = []
     errors = []
 
@@ -98,19 +98,19 @@ def collect_tool_sources(metadata: dict, workspace_path: Path) -> tuple[list[tup
                     continue
                 filename = f"{plugin_id}__{tool_name}.json"
                 source_pairs.append((
-                    workspace_path / "references" / "available-tools" / filename,
+                    workspace_path / "resources" / "available-tools" / filename,
                     reference_path / "available-tools" / filename,
                 ))
 
     if has_dependency(metadata, ("agents", "agent_tools", "agentTools")):
         source_pairs.append((
-            workspace_path / "references" / "agents" / "available_agents.json",
+            workspace_path / "resources" / "agents" / "available_agents.json",
             reference_path / "agents" / "available_agents.json",
         ))
 
     if has_dependency(metadata, ("clis", "cli_tools", "cliTools")):
         source_pairs.append((
-            workspace_path / "references" / "clis" / "available_clis.json",
+            workspace_path / "resources" / "clis" / "available_clis.json",
             reference_path / "clis" / "available_clis.json",
         ))
 
