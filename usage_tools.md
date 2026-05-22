@@ -44,12 +44,6 @@ arguments schema 使用 OpenAI 工具参数兼容写法：
 不使用组合 schema。
 
 
-## Safety
-
-- `name` is the fixed command prefix — never inject user input into it.
-- User values go inside double quotes (`--key "${value}"`), never bare.
-- Reject values with newlines, backticks, `$(`, `;`, or `|` unless the CLI needs them.
-
 ## Example
 
 ```json
